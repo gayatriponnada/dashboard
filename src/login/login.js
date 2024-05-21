@@ -1,13 +1,35 @@
 import { React, useState } from "react";
 import styled from "styled-components";
-import { CiMail, CiLock } from "react-icons/ci";
+import { CiMail } from "react-icons/ci";
 import { AiOutlineApple } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { BsTwitterX } from "react-icons/bs";
+import { FaRegEyeSlash } from "react-icons/fa";
+import { MdOutlineRemoveRedEye } from "react-icons/md";
+import { message } from "antd";
 const Login = () => {
-  const [username, setUsername] = useState("");
-  const Usernamechange = (e) => {
-    setUsername(e.target.value);
+  const [show, setShow] = useState(false);
+  const InitialCredentials = {
+    email: "",
+    password: "",
+  };
+  const [credentials, setcredentials] = useState(InitialCredentials);
+  const onChangevalue = (title, value) => {
+    setcredentials((prevCredentials) => ({
+      ...prevCredentials,
+      [title]: value,
+    }));
+  };
+  const showPassword = () => {
+    if (credentials.password.length > 0) {
+      setShow(!show);
+    }
+  };
+  const SigninClick = () => {
+    if (credentials.email && credentials.password) {
+      message.success("successful login");
+      setcredentials(InitialCredentials);
+    } else message.error("please enter email or password");
   };
   return (
     <Wrapper>
@@ -22,15 +44,24 @@ const Login = () => {
           <Input
             placeholder="Enter Email Address"
             type="text"
-            value={username}
-            onChange={Usernamechange}
+            value={credentials.email}
+            onChange={(e) => onChangevalue("email", e.target.value)}
           />
         </Inputcontainer>
         <Inputcontainer>
-          <CiLock />
-          <Input placeholder="Enter Password" type="password" />
+          {show ? (
+            <MdOutlineRemoveRedEye onClick={showPassword} />
+          ) : (
+            <FaRegEyeSlash onClick={showPassword} />
+          )}
+          <Input
+            placeholder="Enter Password"
+            type={show ? " text" : "password"}
+            value={credentials.password}
+            onChange={(e) => onChangevalue("password", e.target.value)}
+          />
         </Inputcontainer>
-        <LoginButton>Login</LoginButton>
+        <LoginButton onClick={SigninClick}>Login</LoginButton>
         <Or>OR</Or>
         <Buttoncontainer>
           <Alternativelogin>
