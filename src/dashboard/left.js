@@ -77,7 +77,7 @@ const Left = styled.div`
 `;
 
 const Navbarcontainer = styled.div`
-  width: ${(props) => (props.show ? "145px" : "")};
+  width: ${(props) => (props.show ? "145px" : "")};fghj
   padding: 0.5rem 0;
   height: 100%;
   background: #00215e;

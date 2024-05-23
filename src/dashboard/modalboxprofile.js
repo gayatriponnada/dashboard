@@ -30,7 +30,7 @@ const Modalboxprofile = () => {
             <Details>
               <Label>{data.label}</Label>
               <div>:</div>
-              <Label>{data.value}</Label>
+              <Label>{data.value}</Label>ghj
             </Details>
           );
         })}

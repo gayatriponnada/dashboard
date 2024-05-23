@@ -14,7 +14,7 @@ const Dashboard = () => {
 
 export default Dashboard;
 const Wrapper = styled.div`
-  width: 100vw;
+  width: 100vw;hjk
   height: 100vh;
   background: #f1f1f1;
   display: flex;
