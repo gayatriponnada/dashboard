@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-const Modalbox = ({ modalOpen, setModalopen }) => {
+const Modalbox = ({ setModalopen }) => {
   const navigate = useNavigate();
   const Cancelclick = () => {
     setModalopen(false);
@@ -11,8 +11,8 @@ const Modalbox = ({ modalOpen, setModalopen }) => {
     setModalopen(false);
   };
   return (
-    <Wrapper open={modalOpen}>
-      <Boxcontainer open={modalOpen}>
+    <Wrapper>
+      <Boxcontainer>
         <Modalheader>Logout</Modalheader>
         <Message>Are you sure you want to logout?</Message>
         <ButtonContainer>
@@ -31,9 +31,10 @@ export default Modalbox;
 const Wrapper = styled.div`
   width: 100vw;
   height: 100vh;
-  display: ${(props) => (props.open ? "flex" : "none")};
+  display: flex;
   justify-content: center;
   align-items: center;
+  //display: ${(props) => (props.open ? "flex" : "none")};
   inset: 0;
   position: fixed;
   background: RGB(0, 0, 0, 0.7);
@@ -42,16 +43,17 @@ const Wrapper = styled.div`
 const Boxcontainer = styled.div`
   width: 30vw;
   height: 30vh;
-  flex-direction: column;
-  top: 0;
-  left: 0;
-  display: ${(props) => (props.open ? "flex" : "none")};
   background: #fff;
-  transform: ${(props) =>
-    props.open ? "translate(40vw, 40vh)" : "translate(-100vw, -100vh)"};
   border-radius: 10px;
-  transition: all 1s ease-in-out;
-  position: fixed;
+  //display: flex;
+  // flex-direction: column;
+  // top: 0;
+  // left: 0;
+  // display: ${(props) => (props.open ? "flex" : "none")};
+  // transform: ${(props) =>
+    props.open ? "translate(40vw, 40vh)" : "translate(-100vw, -100vh)"};
+  // transition: all 1s ease-in-out;
+  // position: fixed;
 `;
 const Modalheader = styled.h2`
   letter-spacing: 0;

@@ -7,30 +7,38 @@ import { BsTwitterX } from "react-icons/bs";
 import { FaRegEyeSlash } from "react-icons/fa";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { message } from "antd";
+import { useNavigate } from "react-router-dom";
 const Login = () => {
-  const [show, setShow] = useState(false);
   const InitialCredentials = {
     email: "",
     password: "",
   };
+  const navigate = useNavigate();
+
+  const [show, setShow] = useState(false);
   const [credentials, setcredentials] = useState(InitialCredentials);
+
   const onChangevalue = (title, value) => {
     setcredentials((prevCredentials) => ({
       ...prevCredentials,
       [title]: value,
     }));
   };
+
   const showPassword = () => {
     if (credentials.password.length > 0) {
       setShow(!show);
     }
   };
+
   const SigninClick = () => {
     if (credentials.email && credentials.password) {
       message.success("successful login");
       setcredentials(InitialCredentials);
+      navigate("/dashboard");
     } else message.error("please enter email or password");
   };
+
   return (
     <Wrapper>
       <Logincard>

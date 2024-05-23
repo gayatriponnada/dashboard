@@ -3,19 +3,23 @@ import styled from "styled-components";
 import { Avatar } from "antd";
 import Profile from "./profileimage.jpg";
 
-const Modalboxprofile = (profileOpen) => {
-  // const Click=()=>{
-  // 	setProfileopen(false)
-  // }
+const Modalboxprofile = () => {
   const details = [
     {
-      empid: " 001",
-      email: " gayatri@gmail.com",
-      contact: " 1234566789",
+      label: "EmpId",
+      value: "001",
+    },
+    {
+      label: "Email",
+      value: "gayatri@gmail.com",
+    },
+    {
+      label: "Contact",
+      value: "1234567890",
     },
   ];
   return (
-    <Boxcontainer open={profileOpen}>
+    <Boxcontainer>
       <Profilecontainer>
         <Avatar size={55} src={Profile} />
         <Username>Gayatri Lavanya Ponnada</Username>
@@ -23,11 +27,11 @@ const Modalboxprofile = (profileOpen) => {
       <DetailsContainer>
         {details.map((data) => {
           return (
-            <DetailsContainer>
-              <Details>{`EmpId  :${data.empid}`}</Details>
-              <Details>{`Email :${data.email}`}</Details>
-              <Details>{`Conatct :${data.contact}`}</Details>
-            </DetailsContainer>
+            <Details>
+              <Label>{data.label}</Label>
+              <div>:</div>
+              <Label>{data.value}</Label>
+            </Details>
           );
         })}
       </DetailsContainer>
@@ -70,6 +74,13 @@ const DetailsContainer = styled.div`
   gap: 0.5rem;
 `;
 const Details = styled.div`
-  width: 100%;
+  width: 50%;
+
+  display: flex;
+  justify-content: space-evenly;
+`;
+const Label = styled.div`
+  width: 23%;
   font-weight: 500;
+  // text-align: right;
 `;

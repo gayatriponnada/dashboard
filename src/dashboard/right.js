@@ -4,14 +4,11 @@ import { Avatar } from "antd";
 import Profile from "./profileimage.jpg";
 import { IoMdArrowDropdown } from "react-icons/io";
 import Modalboxprofile from "./modalboxprofile";
-import { message } from "antd";
 
 const Rightside = () => {
   const [profileOpen, setProfileopen] = useState(false);
   const showProfile = () => {
     setProfileopen(!profileOpen);
-    message.success("clicked");
-    console.log(profileOpen);
   };
   const tabledata = [
     {
