@@ -164,7 +164,7 @@ const Rightside = () => {
 export default Rightside;
 
 const Right = styled.div`
-  width: calc(100vw-60px);fgh
+  width: calc(100vw-60px);
 `;
 
 const DashboardContainer = styled.div`
